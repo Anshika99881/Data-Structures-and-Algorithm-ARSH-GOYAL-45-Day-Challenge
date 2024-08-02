@@ -1,0 +1,24 @@
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> p = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (ch == '(' || ch == '[' || ch == '{') {
+                p.push(ch);
+            } else {
+                if (p.isEmpty()) {
+                    return false;
+                }
+                char top = p.peek();
+                if ((top == '(' && ch == ')') || (top == '[' && ch == ']') || (top == '{' && ch == '}')) {
+                    p.pop();
+                } else {
+                    return false;
+                }
+            }
+        }
+        return p.isEmpty();
+    }
+        
+    
+}
